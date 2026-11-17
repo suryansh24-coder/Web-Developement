@@ -1,0 +1,2 @@
+# Experiment 11 — Website Performance Optimization
+Open `index.html`. It demonstrates minified CSS/JS filenames, deferred JavaScript, image lazy loading, explicit image dimensions and preconnect. For real projects, also enable server-side gzip/Brotli and cache headers (for example `Cache-Control: public, max-age=31536000, immutable` for versioned static assets). The files are intentionally compact/minified.

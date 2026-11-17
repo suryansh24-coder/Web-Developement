@@ -1,0 +1,7 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>To-Do List</title>
+<style>body{font:16px Arial;max-width:500px;margin:50px auto;padding:15px}input{padding:10px;width:70%}button{padding:10px;cursor:pointer}li{margin:12px 0}li.done span{text-decoration:line-through;color:gray}</style></head><body>
+<h1>To-Do List</h1><form id="form"><input id="task" placeholder="Enter a task" required><button>Add</button></form><ul id="list"></ul>
+<script>
+const form=document.querySelector('#form'),input=document.querySelector('#task'),list=document.querySelector('#list');
+form.addEventListener('submit',e=>{e.preventDefault();const li=document.createElement('li'),span=document.createElement('span'),done=document.createElement('button'),del=document.createElement('button');span.textContent=input.value+' ';done.textContent='Done';del.textContent='Delete';done.onclick=()=>li.classList.toggle('done');del.onclick=()=>li.remove();li.append(span,done,del);list.append(li);input.value='';});
+</script></body></html>

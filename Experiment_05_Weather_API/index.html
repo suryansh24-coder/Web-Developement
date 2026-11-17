@@ -1,0 +1,7 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Weather App</title>
+<style>body{font:16px Arial;background:#eaf4ff;text-align:center;padding:40px}.box{max-width:380px;margin:auto;background:white;padding:24px;border-radius:12px;box-shadow:0 3px 12px #bbb}input,button{padding:11px;border:1px solid #aaa;border-radius:6px}button{background:#2463a6;color:white;cursor:pointer}#result{margin-top:18px}</style></head><body>
+<main class="box"><h1>Weather App</h1><form id="form"><label for="city">City name</label><br><input id="city" placeholder="e.g. Delhi" required><button>Search</button></form><div id="result" aria-live="polite"></div></main>
+<script>
+const KEY='YOUR_OPENWEATHERMAP_API_KEY',form=document.querySelector('#form'),out=document.querySelector('#result');
+form.addEventListener('submit',async e=>{e.preventDefault();out.textContent='Loading...';try{const city=document.querySelector('#city').value.trim(),url=`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${KEY}&units=metric`,res=await fetch(url);if(!res.ok)throw Error(res.status===404?'City not found':'API request failed. Check your key.');const d=await res.json();out.innerHTML=`<h2>${d.name}, ${d.sys.country}</h2><h3>${d.main.temp} °C</h3><p>${d.weather[0].description}</p><p>Humidity: ${d.main.humidity}%</p><p>Wind: ${d.wind.speed} m/s</p>`;}catch(err){out.textContent=err.message;}});
+</script></body></html>
